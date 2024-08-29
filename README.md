@@ -1,2 +1,23 @@
-# Project-4-Machine-Learning
-Final project using machine learning skills to analyze, solve, or visualize a problem of our choosing. This project analyzed a public dataset from kaggle.com looking at the health data records of 1,000 patients, and whether or not they had a diagnosis of dementia.
+# Project 4 - Machine Learning
+Fourth and final project using machine learning skills to analyze, solve, or visualize a problem of our choosing. This project analyzed a public dataset from kaggle.com looking at the health data records of 1,000 patients, and whether or not they had a diagnosis of dementia.
+
+## Group Members 
+Sarah Schilling, Mike Pointek, Michael Nurthen, Julius Bzozowski, Will Midson, Jordan Mayville
+## Objective
+Design one or more machine learning models to accurately predict whether a patient has dementia based on symptoms and lifestyle factors 
+## Summary 
+*  We obtained a data set from Kaggle that had 1000 rows of patients, their symptoms and lifestyle factors, and their dementia status represented by either a 1 (has dementia) or a 0 (does not have dementia).
+*  We then used one hot encoding to change categorical data to numerical data in order to use the data set in a machine learning model.
+*  The first model we ran was a random forest model, which yielded an accuracy score of 100%. It also accurately predicted all true positives and true negatives for dementia patients. This could have been due to potential overfitting. 
+*  Looking at the feature importances, the cognitive_test_scores column had a feature importance score of 0.57, which was signifcantly high in comparison to scores for the other columns. This meant that cognitive test scores had the most contribution to the outcome, which in our case is determining dementia.
+*  We wrote several SQL queries to contrast the dementia results column against other important features to examine their relationships. This illustrated the direct relationship between dementia and the cognative test scores. 
+*  Due to the perfect accuracy of our model, we decided to run a second random forest test, this time eliminating the cognitive test scores column as well as dropping two additional columns: depression_status_No, and apoe_4_Negative. These two columns had partner columns (depression_status_Yes, and apoe_4_Positive) which were mutually exclusive and could have created further unwanted correlation between columns in the data set, affecting the outcome of the model.
+*  The second random forest test yielded an accuracy score of 0.80. We then looked at the feature importance scores again and observed that depression_status_Yes had a score of 0.212, which was relatively high in comparison to the other columns.
+*  We went back to the data set and performed further SQL queries. We found that no patients who tested postive for dementia answered "yes" to having depression. We concluded that this was likely an error in the data set, due to the extreme improbability that all patients who were negative dementia were also negative for depression.
+*  We then ran a  K-Nearest Neighbors model, Support Vector Classification model, and a Logistic Regression model, and included the cognitve_test_scores column on all three. All models yielded accuracy results extremely close to or equal to 100%, further emphasizing the influence of cognitive test scores on the data set.
+*  We then ran 4 deep learning tests. The first test included all columns from the data set; the second test included the four columns with the most influence on the model (cognitive_test_scores, depression_status_Yes, apoe_4_Positive, dementia). Both of these trials resulted in 100% accuracy scores. Again, emphasizing the significance of these columns in predicting dementia accurately.
+*  The third deep learning test was run with all columns excluding the cognitive test scores column, which yielded an accuracy score of 89%. The fourth trial involved running the model without the four most influential columns (cognitive_test_scores, depression_status_Yes, apoe_4_Positive, dementia). This was done to explore the possibilty of effectively predicting dementia without looking at the most heavily influential columns. When run, the model yielded an accuracy score of 87%. 
+## Ethical Considerations / Closing Remarks 
+There are significant ethical considerations involved with conducting a cognitive test. Some people may not immediately take the test because they don't necessarily want to know their diagnosis. They may want to retain control over their lives and try to better themselves through altering lifestyle choices without having this diagnosis on their consciousness. They may not want to know they have dementia and have this inescapable fate. A low accuracy model without cognitive test scores just shows that dementia is a complicated condition and does not have one known cause. The research is still limited. You can do stuff about smoking, weight, diet, etc., but once you have the cognitive test results, you essentially have the diagnosis.
+## Link to Data Set: 
+https://www.kaggle.com/datasets/timothyadeyemi/dementia-patient-health-dataset/data 
